@@ -1,113 +1,174 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
 /* src/App.css */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  background-color: #f4f4f9;
+  color: #333;
 }
 
-.home-page {
-  text-align: center;
-}
-
-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
+  background-color: #6200ea;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header .logo {
+.logo {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-header nav a {
+nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #333;
+  color: white;
+  font-weight: 500;
 }
 
-header nav a:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
-.hero-section {
+.hero-section, .about-section {
   padding: 5rem 2rem;
-  background-color: #e9ecef;
+  text-align: center;
+  background-color: #ffffff;
+  margin: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.hero-section h1 {
+.hero-section h1, .about-section h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #6200ea;
 }
 
-.hero-section p {
+.hero-section p, .about-section p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
+  color: #555;
 }
 
 .cta-button {
   padding: 0.8rem 2rem;
   font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
+  color: white;
+  background-color: #6200ea;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #0056b3;
+  background-color: #3700b3;
 }
 
+.event-list {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.event-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.add-event-form {
+  background-color: white;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-event-form h2 {
+  margin-top: 0;
+  color: #6200ea;
+}
+
+.add-event-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.add-event-form input,
+.add-event-form select,
+.add-event-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.add-event-form button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #6200ea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-event-form button:hover {
+  background-color: #3700b3;
+}
 
 
 
 /* src/App.css */
-/* Add these styles to the existing App.css file */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #6200ea;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
 
 .events-page {
   padding: 2rem;
@@ -119,85 +180,122 @@ header nav a:hover {
 
 .filter-section label {
   margin-right: 1rem;
+  font-weight: 500;
+}
+
+.filter-section select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 .event-list {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .event-card {
-  border: 1px solid #ddd;
-  padding: 1rem;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .event-card h2 {
   margin-top: 0;
+  color: #6200ea;
+}
+
+.event-card p {
+  margin: 0.5rem 0;
+}
+
+.event-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.event-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
 }
 
 .add-event-form {
-  margin-top: 3rem;
+  background-color: white;
   padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  margin-top: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .add-event-form h2 {
   margin-top: 0;
-}
-
-.add-event-form div {
-  margin-bottom: 1rem;
+  color: #6200ea;
 }
 
 .add-event-form label {
   display: block;
   margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .add-event-form input,
 .add-event-form select,
 .add-event-form textarea {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-size: 1rem;
 }
 
-.add-event-form button {
+.add-event-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-button {
   padding: 0.8rem 2rem;
   font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
+  color: white;
+  background-color: #6200ea;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.add-event-form button:hover {
-  background-color: #0056b3;
-}
-
-
-/* src/App.css */
-/* Add these styles to the existing App.css file */
-
-.about-page {
-  padding: 2rem;
-  text-align: center;
-}
-
-.about-page h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.about-page p {
-  font-size: 1.2rem;
-  max-width: 800px;
-  margin: 0 auto 1.5rem;
-  line-height: 1.6;
+.submit-button:hover {
+  background-color: #3700b3;
 }

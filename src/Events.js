@@ -1,9 +1,11 @@
 // src/Events.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Events = () => {
-  // Sample initial events
   const initialEvents = [
     {
       id: 1,
@@ -31,7 +33,6 @@ const Events = () => {
     },
   ];
 
-  // State for events and filters
   const [events, setEvents] = useState(initialEvents);
   const [filterCategory, setFilterCategory] = useState('All');
   const [newEvent, setNewEvent] = useState({
@@ -41,34 +42,55 @@ const Events = () => {
     category: '',
     description: '',
   });
+  const [editEventId, setEditEventId] = useState(null);
 
-  // Handle filter change
   const handleFilterChange = (e) => {
     setFilterCategory(e.target.value);
   };
 
-  // Handle input change for new event form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewEvent({ ...newEvent, [name]: value });
   };
 
-  // Handle form submission to add a new event
   const handleSubmit = (e) => {
     e.preventDefault();
-    const eventToAdd = { ...newEvent, id: events.length + 1 };
-    setEvents([...events, eventToAdd]);
-    setNewEvent({ title: '', date: '', location: '', category: '', description: '' }); // Reset form
+    if (editEventId) {
+      // Update existing event
+      const updatedEvents = events.map(event =>
+        event.id === editEventId ? { ...newEvent, id: editEventId } : event
+      );
+      setEvents(updatedEvents);
+      toast.success('Event updated successfully!');
+      setEditEventId(null);
+    } else {
+      // Add new event
+      const eventToAdd = { ...newEvent, id: events.length + 1 };
+      setEvents([...events, eventToAdd]);
+      toast.success('Event added successfully!');
+    }
+    setNewEvent({ title: '', date: '', location: '', category: '', description: '' });
   };
 
-  // Filter events based on category
+  const handleEdit = (event) => {
+    setNewEvent(event);
+    setEditEventId(event.id);
+  };
+
+  const handleDelete = (id) => {
+    const updatedEvents = events.filter(event => event.id !== id);
+    setEvents(updatedEvents);
+    toast.success('Event deleted successfully!');
+  };
+
   const filteredEvents = filterCategory === 'All'
     ? events
     : events.filter(event => event.category === filterCategory);
 
   return (
     <div className="events-page">
-      <header>
+      <ToastContainer position="top-right" autoClose={3000} />
+      <header className="header">
         <div className="logo">CommunionHub</div>
         <nav>
           <Link to="/">Home</Link>
@@ -79,7 +101,6 @@ const Events = () => {
 
       <h1>Event Listing</h1>
 
-      {/* Filter Section */}
       <div className="filter-section">
         <label htmlFor="category-filter">Filter by Category:</label>
         <select id="category-filter" value={filterCategory} onChange={handleFilterChange}>
@@ -90,22 +111,31 @@ const Events = () => {
         </select>
       </div>
 
-      {/* Event List */}
       <div className="event-list">
         {filteredEvents.map(event => (
-          <div key={event.id} className="event-card">
+          <motion.div
+            key={event.id}
+            className="event-card"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+          >
             <h2>{event.title}</h2>
             <p><strong>Date:</strong> {event.date}</p>
             <p><strong>Location:</strong> {event.location}</p>
             <p><strong>Category:</strong> {event.category}</p>
             <p><strong>Description:</strong> {event.description}</p>
-          </div>
+            <div className="event-actions">
+              <button className="edit-button" onClick={() => handleEdit(event)}>Edit</button>
+              <button className="delete-button" onClick={() => handleDelete(event.id)}>Delete</button>
+            </div>
+          </motion.div>
         ))}
       </div>
 
-      {/* Add Event Form */}
       <div className="add-event-form">
-        <h2>Add New Event</h2>
+        <h2>{editEventId ? 'Edit Event' : 'Add New Event'}</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="title">Title:</label>
@@ -165,7 +195,9 @@ const Events = () => {
               required
             />
           </div>
-          <button type="submit">Add Event</button>
+          <button type="submit" className="submit-button">
+            {editEventId ? 'Update Event' : 'Add Event'}
+          </button>
         </form>
       </div>
     </div>
