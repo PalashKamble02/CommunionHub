@@ -36,3 +36,168 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* src/App.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-page {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+header nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #333;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+.hero-section {
+  padding: 5rem 2rem;
+  background-color: #e9ecef;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+/* src/App.css */
+/* Add these styles to the existing App.css file */
+
+.events-page {
+  padding: 2rem;
+}
+
+.filter-section {
+  margin-bottom: 2rem;
+}
+
+.filter-section label {
+  margin-right: 1rem;
+}
+
+.event-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.event-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.event-card h2 {
+  margin-top: 0;
+}
+
+.add-event-form {
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.add-event-form h2 {
+  margin-top: 0;
+}
+
+.add-event-form div {
+  margin-bottom: 1rem;
+}
+
+.add-event-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.add-event-form input,
+.add-event-form select,
+.add-event-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.add-event-form button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-event-form button:hover {
+  background-color: #0056b3;
+}
+
+
+/* src/App.css */
+/* Add these styles to the existing App.css file */
+
+.about-page {
+  padding: 2rem;
+  text-align: center;
+}
+
+.about-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-page p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
